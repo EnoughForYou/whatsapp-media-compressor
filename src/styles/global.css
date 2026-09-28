@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  /* WhatsApp-teal accent family — single accent, locked across page */
+  --color-wa-50: #e6f7f2;
+  --color-wa-100: #c6eee2;
+  --color-wa-200: #8fddc6;
+  --color-wa-300: #5ccaa9;
+  --color-wa-400: #2fb98d;
+  --color-wa-500: #12a874;   /* primary — WA green, desaturated slightly */
+  --color-wa-600: #0e8a5e;
+  --color-wa-700: #0b6f4c;
+  --color-wa-800: #09563c;
+  --color-wa-900: #07412e;
+  --color-wa-950: #052b1f;
+
+  /* Neutral ink — cool grey, not warm beige */
+  --color-ink-950: #0a0f0d;
+  --color-ink-900: #111816;
+  --color-ink-800: #1a2421;
+  --color-ink-700: #2a3834;
+  --color-ink-600: #3f514c;
+  --color-ink-500: #5c6f6a;
+  --color-ink-400: #82938e;
+  --color-ink-300: #a9b6b2;
+  --color-ink-200: #cdd6d3;
+  --color-ink-100: #e7ecea;
+  --color-ink-50: #f4f7f6;
+
+  --font-sans: "Geist", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-ink-950);
+  color: var(--color-ink-100);
+  min-height: 100dvh;
+}
+
+::selection {
+  background: var(--color-wa-500);
+  color: var(--color-ink-950);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-ink-700);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ink-600);
+}
+
+@layer utilities {
+  .metric {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    border-radius: 9999px;
+    padding: 0.125rem 0.625rem;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    background: var(--color-ink-800);
+    color: var(--color-ink-300);
+  }
+}
+
+@layer components {
+  /* Primary pill CTA — dark ink on WA-teal clears WCAG AA */
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-950);
+    background: var(--color-wa-500);
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+  }
+  .cta:hover {
+    background: var(--color-wa-400);
+  }
+  .cta:active {
+    transform: scale(0.98);
+  }
+  .cta:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-ink-950), 0 0 0 4px var(--color-wa-500);
+  }
+  .cta:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  /* Secondary ghost pill CTA */
+  .ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-ink-300);
+    background: var(--color-ink-800);
+    transition: background-color 0.15s ease;
+    cursor: pointer;
+  }
+  .ghost:hover {
+    background: var(--color-ink-700);
+  }
+  .ghost:active {
+    transform: scale(0.98);
+  }
+  .ghost:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-ink-950), 0 0 0 4px var(--color-ink-600);
+  }
+}
